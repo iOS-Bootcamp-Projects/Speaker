@@ -9,9 +9,12 @@ import Cocoa
 
 class ViewController: NSViewController {
 
+    let speaker = NSSpeechSynthesizer()
+    @IBOutlet weak var value: NSTextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        ///speaker.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -21,6 +24,14 @@ class ViewController: NSViewController {
         }
     }
 
-
+    @IBAction func speak(_ sender: Any) {
+        speaker.startSpeaking(value.stringValue)
+        speaker.rate = 0.28
+       
+    }
+    
+    @IBAction func stop(_ sender: Any) {
+        speaker.stopSpeaking()
+    }
 }
 
